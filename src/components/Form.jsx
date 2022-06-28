@@ -23,8 +23,10 @@ const InputSubmit = styled.input`
 `
 
 const Form = () => {
+    const [cryptos, setCryptos] = useState([])
+    
     const [ coin, SelectCoins ] = useSelectCoins('Elige tu Moneda', coins);
-    const [criptos, setCriptos] = useState([])
+    const [ cryptocurrency, SelectCryptos ] = useSelectCoins('Elige tu Criptomoneda', cryptos);
 
     useEffect(() => {
         const APIRequest = async () => {
@@ -34,14 +36,14 @@ const Form = () => {
             const result = await response.json();
 
 
-            const criptoArray = result.Data.map(cripto => {
-                const criptObject  = {
+            const cryptoArray = result.Data.map(cripto => {
+                const cryptObject  = {
                     id: cripto.CoinInfo.Name,
                     name: cripto.CoinInfo.FullName
                 }
-                return criptObject;
+                return cryptObject;
             })
-            setCriptos(criptoArray);
+            setCryptos(cryptoArray);
         }
         APIRequest();
     }, [])
@@ -50,6 +52,7 @@ const Form = () => {
     return (
         <form>
             <SelectCoins />
+            <SelectCryptos />
             <InputSubmit
                 type="submit"
                 value="Cotizar"
