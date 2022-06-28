@@ -23,14 +23,14 @@ const InputSubmit = styled.input`
 `
 
 const Form = () => {
-    const [ SelectCoins ] = useSelectCoins('Elige tu Moneda', coins);
+    const [ coin, SelectCoins ] = useSelectCoins('Elige tu Moneda', coins);
 
     SelectCoins();
 
     return (
         <form>
             <SelectCoins />
-
+            {coin}
             <InputSubmit
                 type="submit"
                 value="Cotizar"
