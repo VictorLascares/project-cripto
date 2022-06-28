@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import styled from '@emotion/styled'
 import { coins } from '../data/coins'
 import useSelectCoins from '../hooks/useSelectCoins'
+import Toast from './Toast/Toast'
 
 const InputSubmit = styled.input`
     background-color: #9a97ff;
@@ -24,13 +25,14 @@ const InputSubmit = styled.input`
 
 const Form = () => {
     const [cryptos, setCryptos] = useState([])
+    const [error, setError] = useState(false)
     
     const [ coin, SelectCoins ] = useSelectCoins('Elige tu Moneda', coins);
     const [ cryptocurrency, SelectCryptos ] = useSelectCoins('Elige tu Criptomoneda', cryptos);
 
     useEffect(() => {
         const APIRequest = async () => {
-            const url = "https://min-api.cryptocompare.com/data/top/mktcapfull?limit=20&tsym=USD"
+            const url = "https://min-api.cryptocompare.com/data/top/mktcapfull?limit=10&tsym=USD"
 
             const response = await fetch(url);
             const result = await response.json();
@@ -47,17 +49,36 @@ const Form = () => {
         }
         APIRequest();
     }, [])
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        if (!coin || !cryptocurrency) {
+            setError(true);
+            return
+        }
+        setError(false);
+    }
     
 
     return (
-        <form>
-            <SelectCoins />
-            <SelectCryptos />
-            <InputSubmit
-                type="submit"
-                value="Cotizar"
-            />
-        </form>
+        <>
+            {
+                error && <Toast 
+                    message={'Todos los Campos son obligatorios'} 
+                    setError={setError}
+                /> 
+            }
+            <form
+                onSubmit={handleSubmit}
+            >
+                <SelectCoins />
+                <SelectCryptos />
+                <InputSubmit
+                    type="submit"
+                    value="Cotizar"
+                />
+            </form>
+        </>
     )
 }
 
