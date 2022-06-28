@@ -1,7 +1,8 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import styled from '@emotion/styled'
 import Form from './components/Form'
 import CriptoImage from './img/imagen-criptos.png'
+import { coins } from './data/coins'
 
 const Container = styled.div`
     max-width: 900px;
@@ -41,21 +42,30 @@ const Heading = styled.h1`
 `
 
 function App() {
-  const [count, setCount] = useState(0)
+    const [coins, setCoins] = useState({})
 
-  return (
-    <Container>
-        <Image 
-            src={CriptoImage} 
-            alt="Imagenes criptomonedas" 
-        />
-        <div>
-            <Heading>Cotiza Criptomonedas al Instante</Heading>
-            <Form />
-        </div>
-    </Container>
+    useEffect(() => {
+        if(Object.keys(coins).length > 0) {
+            console.log(coins);
+        }
+    }, [coins])
     
-  )
+
+    return (
+        <Container>
+            <Image 
+                src={CriptoImage} 
+                alt="Imagenes criptomonedas" 
+            />
+            <div>
+                <Heading>Cotiza Criptomonedas al Instante</Heading>
+                <Form 
+                    setCoins={setCoins}
+                />
+            </div>
+        </Container>
+        
+    )
 }
 
 export default App

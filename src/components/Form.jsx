@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import styled from '@emotion/styled'
 import { coins } from '../data/coins'
 import useSelectCoins from '../hooks/useSelectCoins'
-import Toast from './Toast/Toast'
+import Toast from './Toast'
 
 const InputSubmit = styled.input`
     background-color: #9a97ff;
@@ -23,7 +23,7 @@ const InputSubmit = styled.input`
     }
 `
 
-const Form = () => {
+const Form = ({ setCoins }) => {
     const [cryptos, setCryptos] = useState([])
     const [error, setError] = useState(false)
     
@@ -57,6 +57,11 @@ const Form = () => {
             return
         }
         setError(false);
+
+        setCoins({
+            coin,
+            cryptocurrency
+        })
     }
     
 

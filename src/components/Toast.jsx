@@ -1,6 +1,5 @@
 import { useEffect } from 'react'
 import styled from '@emotion/styled'
-import './toast.css';
 
 
 const Error = styled.div`
