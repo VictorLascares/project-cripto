@@ -1,4 +1,4 @@
-const coins = [
+const data = [
     { id: 'USD', name: 'Dolar de Estados Unidos' },
     { id: 'MXN', name: 'Peso Mexicano' },
     { id: 'EUR', name: 'Euro' },
@@ -7,5 +7,5 @@ const coins = [
 
 
 export {
-    coins
+    data
 }

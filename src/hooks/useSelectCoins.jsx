@@ -25,7 +25,7 @@ const useSelectCoins = ( label, options ) => {
                 value={state}
                 onChange={e => setState(e.target.value)}
             >
-                <option value="">Seleccione</option>
+                <option>Seleccione</option>
                 {options.map(option => (
                     <option
                         key={option.id}

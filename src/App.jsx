@@ -3,7 +3,6 @@ import styled from '@emotion/styled'
 import Form from './components/Form'
 import Result from './components/Result'
 import CriptoImage from './img/imagen-criptos.png'
-import { coins } from './data/coins'
 
 const Container = styled.div`
     max-width: 900px;

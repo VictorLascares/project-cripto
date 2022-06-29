@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import styled from '@emotion/styled'
-import { coins } from '../data/coins'
+import { data } from '../data/coins'
 import useSelectCoins from '../hooks/useSelectCoins'
 import Toast from './Toast'
 
@@ -27,7 +27,7 @@ const Form = ({ setCoins }) => {
     const [cryptos, setCryptos] = useState([])
     const [error, setError] = useState(false)
     
-    const [ coin, SelectCoins ] = useSelectCoins('Elige tu Moneda', coins);
+    const [ coin, SelectCoins ] = useSelectCoins('Elige tu Moneda', data);
     const [ cryptocurrency, SelectCryptos ] = useSelectCoins('Elige tu Criptomoneda', cryptos);
 
     useEffect(() => {
