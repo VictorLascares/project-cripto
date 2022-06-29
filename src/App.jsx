@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import styled from '@emotion/styled'
 import Form from './components/Form'
+import Result from './components/Result'
 import CriptoImage from './img/imagen-criptos.png'
 import { coins } from './data/coins'
 
@@ -72,6 +73,7 @@ function App() {
                 <Form 
                     setCoins={setCoins}
                 />
+                {Object.keys(result).length>0 && <Result result={result} />}
             </div>
         </Container>
         
