@@ -6,7 +6,7 @@ const Container = styled.div`
     font-family: 'Lato', sans-serif;
     display: flex;
     align-items: center;
-    gap: 1.5rem;
+    gap: 1rem;
     margin-top: 30px;
 `
 
